@@ -1,4 +1,28 @@
 {
-  "name": "md-links",
-  "version": "0.1.0"
+  "name": "mex008-fe-md-link",
+  "version": "1.0.0",
+  "description": "Read and analyze Markdown file to verify links and report statistics",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BLANK-TECH/MEX008-FE-md-link.git"
+  },
+  "keywords": [
+    "Markdown"
+  ],
+  "author": "Blanca Garduño",
+  "license": "ISC",
+  "bin": {
+    "mdLinks": "./cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/BLANK-TECH/MEX008-FE-md-link/issues"
+  },
+  "homepage": "https://github.com/BLANK-TECH/MEX008-FE-md-link#readme"
 }
