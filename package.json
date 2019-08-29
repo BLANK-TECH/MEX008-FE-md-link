@@ -1,5 +1,5 @@
 {
-  "name": "mex008-fe-md-link",
+  "name": "blank-md-links",
   "version": "1.0.0",
   "description": "Read and analyze Markdown file to verify links and report statistics",
   "main": "index.js",
@@ -7,7 +7,14 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "eslint": "eslint --ext .js test/",
+    "pretest": "npm run eslint --silent",
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "eslint": "^5.9.0",
+    "eslint-plugin-jest": "^22.1.2",
+    "jest": "^23.6.0"
   },
   "repository": {
     "type": "git",

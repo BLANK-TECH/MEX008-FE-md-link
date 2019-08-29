@@ -1,12 +1,16 @@
 #!/usr/bin/env node
+const miEntrada = require('./modules/mdLinks.js');
+const validate = require('./modules/validate.js');
+const state = require('./modules/state.js');
 
 const [A,B,...args]=process.argv
 
-console.log(`hello world ${args}`);
-
 const URL = args;
-
 console.log(URL);
 
 
-const miEntrada = require('./index.js');
+miEntrada(args);
+// console.log(`hello world ${args}`);
+
+
+
