@@ -1,12 +1,11 @@
 # Markdown Links
 
+
 ## Índice
 
 * [1. Definicion General del proyecto](#1-Definición-General-del-Proyecto)
 * [2. Especificación de Requerimientos](#2-Especificación-de-Requerimientos)
 * [3. Install](#3-Install)
-
-
 
 ***
 
@@ -28,12 +27,10 @@ Diagrama de Flujo sobre el funcionamiento de la herramienta:
 
 ## 3. Install
 
-`npm i blank-md-links`
-
-  require('blank-md-links')
+`npm i -G blank-md-links`
 
 
-### Interfaz de Línea de Comando)
+### Interfaz de Línea de Comando
 
 El ejecutable de nuestra aplicación se ejecuta de la siguiente manera a través de la terminal:
 

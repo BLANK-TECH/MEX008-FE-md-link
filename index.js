@@ -1,8 +1,13 @@
-module.exports = readMarkdown = (args) =>{
+
+const validate = require('./modules/validate.js');
+const state = require('./modules/state.js');
+
+module.exports = mdLinks = (args) =>{
     console.log(`Argumentos: ${args}`);
     
     const fs = require('fs');
     const path = require('path');
+
 
         // console.log(path);
         fs.readFile('./README.md','utf-8',(err,data)=>{

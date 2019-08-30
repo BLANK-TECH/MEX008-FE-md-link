@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-const miEntrada = require('./index');
-const validate = require('./modules/validate.js');
-const state = require('./modules/state.js');
+'use strict';
+
+const miEntrada = require('./');
+
 
 const [A,B,...args]=process.argv
 
