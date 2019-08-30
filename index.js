@@ -15,7 +15,7 @@ module.exports = readMarkdown = (args) =>{
             
         });
 
-        const mdLinks = require('./mdLinks');
+        // const mdLinks = require('.');
 
-        mdLinks.readMarkdown();
+        // mdLinks.readMarkdown();
 }

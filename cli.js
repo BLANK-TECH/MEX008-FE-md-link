@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const miEntrada = require('./modules/mdLinks.js');
+const miEntrada = require('./index');
 const validate = require('./modules/validate.js');
 const state = require('./modules/state.js');
 
