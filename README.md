@@ -8,7 +8,6 @@
 * [3. Install](#3-Install)
 
 ***
-ivon
 
 ## 1. Definicion General del Proyecto
 
@@ -35,7 +34,7 @@ Diagrama de Flujo sobre el funcionamiento de la herramienta:
 
 El ejecutable de nuestra aplicación se ejecuta de la siguiente manera a través de la terminal:
 
-`md-links <path-to-file> [options]`
+`mdLinks <path-to-file> [options]`
 
 Por ejemplo:
 
