@@ -3,15 +3,13 @@
 
 const miEntrada = require('./');
 
-
-const [A,B,...args]=process.argv
-
-const URL = args;
-console.log(URL);
+// const [A,B,...args]=process.argv
 
 
-miEntrada(args);
-// console.log(`hello world ${args}`);
+
+
+miEntrada(process.argv);
+
 
 
 
