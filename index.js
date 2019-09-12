@@ -6,37 +6,46 @@ const read = require('./modules/readMarkdown.js');
 const convert = require('./modules/convertMarkdown.js');
 
 
-module.exports = mdLinks = (arrayOption) =>{
-    const url = process.argv[2]; 
-    const optionOne = process.argv[3];
-    const optionTwo = process.argv[4];
-    
+module.exports = mdLinks = (url,optionOne,optionTwo) =>{
 
-    if((url && optionOne && optionTwo) != null){
-        console.log('elegiste 2 opciones')
-    }
+    const comandos = new Promise ( (resolve,reject) => {
+
+    if(url != null && optionOne == null && optionTwo == null){
+            // const URL = path.resolve(url);
+            read(url)
+            .then((data)=>{
+                // console.log(data);
+                return convert(data,url)
+            })
+            .then((arrayObject)=>{
+                resolve(arrayObject);
+            })
+            .catch((error)=>{
+                reject(error);
+            })
+        }
     else if((url && optionOne) != null){
-        console.log('elegiste una opcion')
-    }
-    else if(url != null){
-        const URL = path.resolve(url);
-        console.log('solo escribiste una ruta')
-        read(URL)
+        read(url)
         .then((data)=>{
-            // console.log(data);
-            return convert(data,URL)
+            return convert(data,url)     
         })
         .then((arrayObject)=>{
-            console.log(arrayObject)
+            const prueba = validate(arrayObject);
+            resolve(prueba);
         })
         .catch((error)=>{
-            error = new Error('La extension del archivo no es valida (.md)');
-            console.log(error);
+            reject(error);
         })
+    }
+    else if((url && optionOne && optionTwo) != null){
+        console.log('elegiste 2 opciones')
     }
     else{
         console.log('error, debes ingresar la ruta al menos');
     }
+});
+
+return comandos;
         
     }
     

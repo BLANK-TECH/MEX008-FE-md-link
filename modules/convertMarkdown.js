@@ -1,6 +1,7 @@
 const path = require('path');
 
 const convertMarkdown = (data,url) => {
+    const URL = path.resolve(url);
 
     const ArrayObject = new Promise ((resolve,reject) =>{
         
@@ -19,12 +20,13 @@ const convertMarkdown = (data,url) => {
 
             let msg = {'href': href,
                     'text': text,
-                    'file': url
+                    'file': URL
                         };
             
     
             final.push(msg);
             resolve(final);
+
         }
 
         if(myArray == null){
