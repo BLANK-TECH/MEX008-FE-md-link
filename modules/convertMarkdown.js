@@ -9,7 +9,7 @@ const convertMarkdown = (data,url) => {
             return str.split('').slice(1, -1).join('');
         }
 
-    const expReg = new RegExp (/(\[[a-zA-Z0-9\.?]{1,}\])+(\(https\:\/\/(www\.)?[a-zA-Z0-9\-?\_?]{1,}((\.?[a-z]{2,4})?\/?){1,6}\))/,"gm");
+        const expReg = new RegExp (/(\[[a-zA-Z0-9\.?]{1,}\])+(\(https\:\/\/(www\.)?[a-zA-Z0-9\-?\_?]{1,}((\.?[a-z]{2,4})?\/?){1,6}\))/,"gm");
         
         let myArray; 
         let final = [];

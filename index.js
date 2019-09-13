@@ -27,11 +27,14 @@ module.exports = mdLinks = (url,optionOne,optionTwo) =>{
     else if((url && optionOne) != null){
         read(url)
         .then((data)=>{
-            return convert(data,url)     
+            return convert(data,url);   
         })
         .then((arrayObject)=>{
-            const prueba = validate(arrayObject);
-            resolve(prueba);
+            return validate(arrayObject);
+            
+        })
+        .then((objectValidated)=>{
+            resolve(objectValidated);
         })
         .catch((error)=>{
             reject(error);

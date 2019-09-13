@@ -1,26 +1,35 @@
 const https = require('https');
 
 const validateMarkdown = (arrayObject) => {
-    // return(arrayObject);
     let array= [];
-    //Envolverlo en una promesa
-    arrayObject.map((x)=>{
-        
-        // array.push(x.href);
-         https.get(x.href ,(res) =>{
+        //Envolverlo en una promesa
+        const objectValidated = new Promise ((resolve,reject) => {
+            arrayObject.map((x)=>{
+            https.get(x.href ,(res) =>{
 
             let { statusCode } = res;
             // console.log(statusCode);
-            Object.defineProperty(x,'status',{value:statusCode})
-        })
+            if(statusCode == null){
+                reject(error);
 
-        array.push(x);
+            }
+            Object.defineProperty(x,'status',{value:statusCode})
+            array.push(x);
+                
+            })
+            
+        });
         //if que el numero sea igual al del objeto que llega
-        //retornarlo en el resolve
-    })
+            //retornarlo en el resolve
+        if(array.length == arrayObject.length){
+            
+            resolve(array);
+        }
+     
+        
+    });
     
-    return array; 
-    
+    return objectValidated;
     
 }
 
