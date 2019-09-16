@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const validate = require('./modules/validate.js');
+const validateMarkdown = require('./modules/validate.js');
 const state = require('./modules/state.js');
 const read = require('./modules/readMarkdown.js');
 const convert = require('./modules/convertMarkdown.js');
@@ -30,7 +30,7 @@ module.exports = mdLinks = (url,optionOne,optionTwo) =>{
             return convert(data,url);   
         })
         .then((arrayObject)=>{
-            return validate(arrayObject);
+            return validateMarkdown(arrayObject);
             
         })
         .then((objectValidated)=>{

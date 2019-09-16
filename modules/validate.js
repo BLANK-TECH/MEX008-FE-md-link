@@ -5,29 +5,35 @@ const validateMarkdown = (arrayObject) => {
         //Envolverlo en una promesa
         const objectValidated = new Promise ((resolve,reject) => {
             arrayObject.map((x)=>{
-            https.get(x.href ,(res) =>{
-
-            let { statusCode } = res;
-            // console.log(statusCode);
-            if(statusCode == null){
-                reject(error);
-
-            }
-            Object.defineProperty(x,'status',{value:statusCode})
-            array.push(x);
-                
-            })
+                const status = getHttps(x);
+                Object.defineProperty(x,'status',{value:status})
+                array.push(x);
             
+            });
+            resolve(array);
         });
+
+        async function getHttps(x){
+            try{
+                await https.get(x.href, (res)=>{
+                    let {statusCode} = res;
+                    return statusCode;
+                })
+            }
+            catch(error){
+                return error;
+                
+            }
+        }
+            
         //if que el numero sea igual al del objeto que llega
             //retornarlo en el resolve
-        if(array.length == arrayObject.length){
+        // if(array.length == arrayObject.length){
             
-            resolve(array);
-        }
+        //     resolve(array);
+        // }
      
         
-    });
     
     return objectValidated;
     
