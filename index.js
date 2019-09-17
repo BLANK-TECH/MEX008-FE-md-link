@@ -34,8 +34,9 @@ module.exports = mdLinks = (url,optionOne,optionTwo) =>{
             
         })
         .then((objectValidated)=>{
-            resolve(objectValidated);
+            return Promise.all(objectValidated);
         })
+        .then(data => resolve(data))
         .catch((error)=>{
             reject(error);
         })
