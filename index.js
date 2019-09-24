@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const validateMarkdown = require('./modules/validate.js');
-const state = require('./modules/state.js');
+const stats = require('./modules/state.js');
 const read = require('./modules/readMarkdown.js');
 const convert = require('./modules/convertMarkdown.js');
 
@@ -25,7 +25,8 @@ module.exports = mdLinks = (url,optionOne,optionTwo) =>{
             })
         }
     else if((url && optionOne) != null){
-        read(url)
+        if(optionOne === '--validate'){
+            read(url)
         .then((data)=>{
             return convert(data,url);   
         })
@@ -40,7 +41,25 @@ module.exports = mdLinks = (url,optionOne,optionTwo) =>{
         .catch((error)=>{
             reject(error);
         })
-    }
+        }
+    else if(optionOne === '--stats'){
+            read(url)
+            .then((data)=>{
+                return convert(data,url);
+            })
+            .then((arrayObject)=>{
+                return stats(arrayObject);
+            })
+            .then(data=> resolve(data))  
+            .catch((error)=>{
+                reject(error);
+            })
+        }
+        else{
+            const err = new Error('Opcion no valida, utiliza: mdLinks HELP');
+            return resolve(err);    
+        }    
+    }    
     else if((url && optionOne && optionTwo) != null){
         console.log('elegiste 2 opciones')
     }
@@ -51,5 +70,5 @@ module.exports = mdLinks = (url,optionOne,optionTwo) =>{
 
 return comandos;
         
-    }
+}
     
