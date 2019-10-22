@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const validateMarkdown = require('./modules/validate.js');
-const stats = require('./modules/state.js');
+const stats = require('./modules/stats.js');
 const read = require('./modules/readMarkdown.js');
 const convert = require('./modules/convertMarkdown.js');
 
@@ -24,25 +24,25 @@ module.exports = mdLinks = (url,optionOne,optionTwo) =>{
                 reject(error);
             })
         }
-    else if((url && optionOne) != null){
+    else if(url != null && optionOne != null && optionTwo == null){
         if(optionOne === '--validate'){
             read(url)
-        .then((data)=>{
-            return convert(data,url);   
-        })
-        .then((arrayObject)=>{
-            return validateMarkdown(arrayObject);
-            
-        })
-        .then((objectValidated)=>{
-            return Promise.all(objectValidated);
-        })
-        .then(data => resolve(data))
-        .catch((error)=>{
-            reject(error);
-        })
+            .then((data)=>{
+                return convert(data,url);   
+            })
+            .then((arrayObject)=>{
+                return validateMarkdown(arrayObject);
+                
+            })
+            .then((objectValidated)=>{
+                return Promise.all(objectValidated);
+            })
+            .then(data => resolve(data))
+            .catch((error)=>{
+                reject(error);
+            })
         }
-    else if(optionOne === '--stats'){
+        else if(optionOne === '--stats'){
             read(url)
             .then((data)=>{
                 return convert(data,url);

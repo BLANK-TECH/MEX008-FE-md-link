@@ -14,7 +14,7 @@ const validateMarkdown = async (arrayObject) => {
     const objectValidated = arrayObject.map(async (x)=>{
         try {
         const status = await getHttps(x);
-        return Object.assign(x, {value: status}); 
+        return Object.assign(x, {status: status}); 
         } catch (e) {
             console.log(e);
         }
