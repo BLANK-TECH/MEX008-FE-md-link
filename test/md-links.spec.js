@@ -11,9 +11,9 @@ test('the data is string', ()=>{
   });
 });
 
-// test('the data se cae',()=>{
-//  return expect(readMarkdown('README.md')).reject.toBe('error');
-// });
+test('the data not is .md',()=>{
+ return expect(readMarkdown('README.txt')).reject.toBe('error');
+});
 
 // test('the data is a object',() =>{
 //   return expect(readMarkdown('README.md')).resolves.toBe('string');

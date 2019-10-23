@@ -1,6 +1,6 @@
 {
   "name": "blank-md-links",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Read and analyze Markdown file to verify links and report statistics",
   "main": "index.js",
   "directories": {
