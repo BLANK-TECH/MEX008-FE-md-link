@@ -5,38 +5,15 @@ const stats = require('./modules/stats.js');
 const read = require('./modules/readMarkdown.js');
 const convert = require('./modules/convertMarkdown.js');
 const broken = require('./modules/broken');
-const chalk = require('chalk');
+const help = require('./modules/help');
 
 module.exports = mdLinks = (url,optionOne,optionTwo) =>{
 
     const comandos = new Promise ( (resolve,reject) => {
 
     if(url === 'help'){
-        console.log(`
-${chalk.blue.bold('***Interfaz de Línea de Comando***')}
-
-Ejecuta de la siguiente manera a través de la terminal:
-
-    ${chalk.yellow('mdLinks <path-to-file> [options]')}
-    
-${chalk.blue('**Options**')}
-
-${chalk.red('--validate')}
-
-El módulo hace una petición HTTP para
-averiguar si el link funciona o no.
-
-${chalk.red('--stats')}
-
-El output será un objeto con estadísticas
-básicas sobre los links.
-
-${chalk.red('--stats --validate')}
-
-Para obtener estadísticas que necesiten de 
-los resultados de la validación.
-`);
-        
+        const instrucciones = help();
+        resolve(instrucciones);   
     }    
     else if(url != null && optionOne == null && optionTwo == null){
             // const URL = path.resolve(url);
