@@ -5,7 +5,6 @@ const stats = (arrayObject) => {
     const total = arrayObject.length;
     const arrayUrls = [];
     let url;
-    // let indices = [];
     let unique = 0;
     
 

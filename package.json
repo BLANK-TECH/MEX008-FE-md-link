@@ -12,6 +12,7 @@
     "test": "jest --coverage"
   },
   "dependencies": {
+    "chalk": "^2.4.2",
     "eslint": "^5.9.0",
     "eslint-plugin-jest": "^22.1.2",
     "jest": "^23.6.0",
