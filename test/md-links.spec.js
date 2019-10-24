@@ -1,9 +1,11 @@
 const readMarkdown = require('../modules/readMarkdown');
 const convertMarkdown = require('../modules/convertMarkdown');
+const validateLinks = require('../modules/validate');
 const mdLinks = require('../index');
 const broken = require('../modules/broken');
 const help = require('../modules/help');
 
+const dataReadme = '[Node.js](https://nodejs.org/)[Google](https://www.google.com.mx/)[Hotmail](https://outlook.live.com/owa/)[Platzi](https://platzi.com/)';
 const objectStats = {Total:8,Unique:6};
 const objectData = [{ 
 href: 'https://platzi.com/',
@@ -16,13 +18,13 @@ test('readMarkdown should be a function', () => {
   expect(typeof readMarkdown).toBe('function');
 });
 
-test('the data is string', ()=>{
+test('readMarkdown shoul return a string', ()=>{
   return readMarkdown('READMEPRUEBA.md').then(data=>{
     expect(typeof data).toBe('string');
   });
 });
 
-test('the file is not .md',()=>{
+test('The file extension README.txt is not .md',()=>{
  return readMarkdown('README.txt').catch(e=>{
   expect(e).toBe('error');
  })
@@ -33,12 +35,19 @@ test('convertMarkdown should be a function', () => {
 });
 
 test('convertMarkdown should return a Object', ()=>{
-  return readMarkdown('READMEPRUEBA.md').then(data=>{
-    return convertMarkdown(data,'READMEPRUEBA.md').then(object=>{
+    return convertMarkdown(dataReadme,'READMEPRUEBA.md').then(object=>{
       expect(typeof object).toBe('object');
-    });
-  })
-  
+  }) 
+});
+
+test('validateLinks should be a function', () => {
+  expect(typeof validateLinks).toBe('function');
+});
+
+test('validateLinks should return a Object', ()=>{
+  return validateLinks(objectData,'READMEPRUEBA.md').then(object=>{
+    expect(typeof object).toBe('object');
+  }) 
 });
 
 test('mdLinks should be a Function', () => {
@@ -46,11 +55,16 @@ test('mdLinks should be a Function', () => {
 });
 
 test('--validate should return a object', ()=>{
-    // expect.assertions(1)
     return mdLinks('READMEPRUEBA.md','--validate').then(res=>{
       expect(res instanceof Array).toBe(true);
     });
 });
+
+test('--validate should return a object', ()=>{
+  return mdLinks('READMEPRUEBA.md','--validate').catch(e=>{
+    expect(e).toBe('error');
+  });
+30000});
 
 test('--stats should return a object', ()=>{
   return mdLinks('READMEPRUEBA.md','--stats').then(object=>{
@@ -59,10 +73,10 @@ test('--stats should return a object', ()=>{
 });
 
 test('--stats --validate should return a object', ()=>{
-  return mdLinks('READMEPRUEBA.md','--stats --validate').then(object=>{
+  return mdLinks('READMEPRUEBA.md','--stats', '--validate').then(object=>{
     expect(typeof object).toBe('object');
   });
-});
+30000});
 
 test('broken should be a function', () => {
   expect(typeof broken).toBe('function');
@@ -89,8 +103,9 @@ test('mdLinks help should return a object', ()=>{
 });
 
 test('mdLinks should return error', ()=>{
+  // expect.assertions(1);
   return mdLinks().catch(e=>{
-    expect(e).toBe('error');
+    expect(e).toBe('Error, deberias ingresar una ruta al menos o ingresa mdLinks help');
+   })
   });
   
-});

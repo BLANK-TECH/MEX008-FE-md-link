@@ -1,6 +1,6 @@
 const https = require('https');
 
-const validateMarkdown = async (arrayObject) => {
+const validateLinks = async (arrayObject) => {
     function getHttps(x){
         return new Promise((resolve, reject) => {
                 https.get(x.href, (res)=>{
@@ -16,7 +16,7 @@ const validateMarkdown = async (arrayObject) => {
         const status = await getHttps(x);
         return Object.assign(x, {status: status}); 
         } catch (e) {
-            console.log(e);
+            reject(e);
         }
     });
 
@@ -24,5 +24,5 @@ const validateMarkdown = async (arrayObject) => {
     
 }
 
-module.exports = validateMarkdown;
+module.exports = validateLinks;
   
